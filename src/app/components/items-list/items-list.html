@@ -1,0 +1,25 @@
+<div style="padding: 20px;">
+  <h2>Список мов програмування</h2>
+
+  <div *ngIf="languages.length > 0">
+    
+    <div *ngFor="let lang of languages" 
+         style="border: 1px solid #ccc; margin: 10px; padding: 15px; border-radius: 8px;">
+      
+      <h3>{{ lang.name }}</h3>
+      <p>Автор: <strong>{{ lang.creator }}</strong> ({{ lang.year }})</p>
+      
+      <p>
+        Статус: 
+        <span *ngIf="lang.isPopular" style="color: green; font-weight: bold;">Популярна </span>
+        <span *ngIf="!lang.isPopular" style="color: gray;">Класика </span>
+      </p>
+
+    </div>
+
+  </div>
+
+  <div *ngIf="languages.length === 0">
+    <p>Даних немає </p>
+  </div>
+</div>
