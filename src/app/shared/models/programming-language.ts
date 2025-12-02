@@ -4,4 +4,7 @@ export interface ProgrammingLanguage {
   creator: string;  
   year: number;     
   isPopular: boolean;
+  image: string;      
+  description: string; 
+  isTrending: boolean; 
 }
