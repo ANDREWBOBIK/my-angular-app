@@ -1,20 +1,22 @@
-<div style="border: 1px solid #ccc; margin: 10px; padding: 15px; border-radius: 8px; display: flex; align-items: center;">
-      
-    <img [src]="language.image" [alt]="language.name" style="width: 50px; height: 50px; margin-right: 15px; border-radius: 4px;">
+<div class="card" [ngClass]="{ 'popular': language.isPopular }">
 
-    <div>
-        <h3>{{ language.name }}</h3>
-        <p>Автор: <strong>{{ language.creator }}</strong> ({{ language.year }})</p>
-        
-        <p>
-            Статус: 
-            <span *ngIf="language.isPopular" style="color: green; font-weight: bold;">Популярна </span>
-            <span *ngIf="!language.isPopular" style="color: gray;">Класика </span>
-            
-            <span *ngIf="language.isTrending" style="color: blue; font-weight: bold; margin-left: 10px;">🔥 В тренді</span>
-        </p>
+  <img [src]="language.image" [alt]="language.name">
 
-        <p><small>{{ language.description }}</small></p>
-    </div>
+  <div>
+    <h3>{{ language.name }}</h3>
+
+    <p>
+      Автор: <strong>{{ language.creator }}</strong> ({{ language.year }})
+    </p>
+
+    <p>
+      <span *ngIf="language.isPopular">Популярна</span>
+      <span *ngIf="!language.isPopular">Класика</span>
+
+      <span *ngIf="language.isTrending" class="trending">🔥 У тренді</span>
+    </p>
+
+    <p><small>{{ language.description }}</small></p>
+  </div>
 
 </div>

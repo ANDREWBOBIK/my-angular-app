@@ -2,15 +2,13 @@
   <h2>Список мов програмування</h2>
 
   <div *ngIf="languages.length > 0">
-    
-    <app-item-card 
-      *ngFor="let lang of languages" 
+    <app-item-card
+      *ngFor="let lang of languages"
       [language]="lang">
     </app-item-card>
-
   </div>
 
   <div *ngIf="languages.length === 0">
-    <p>Даних немає </p>
+    <p>Даних немає</p>
   </div>
 </div>
