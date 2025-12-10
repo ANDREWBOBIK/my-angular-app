@@ -1,0 +1,23 @@
+<div style="padding: 20px;">
+
+  <h2>Список мов програмування</h2>
+
+  <input
+    type="text"
+    placeholder="Пошук..."
+    [(ngModel)]="searchText"
+    style="padding: 5px; margin: 10px 0; width: 250px;"
+  />
+
+  <div *ngFor="let lang of filteredLanguages">
+    <app-item-card
+      [language]="lang"
+      (select)="onSelected(lang)">
+    </app-item-card>
+  </div>
+
+  <div *ngIf="filteredLanguages.length === 0">
+    <p>Нічого не знайдено</p>
+  </div>
+
+</div>
