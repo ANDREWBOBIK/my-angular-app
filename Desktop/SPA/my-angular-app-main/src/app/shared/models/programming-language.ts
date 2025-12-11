@@ -3,10 +3,8 @@ export interface ProgrammingLanguage {
   name: string;
   creator: string;
   year: number;
+  isPopular: boolean;
   image: string;
   description: string;
-
-  
-  isPopular: boolean;
   isTrending: boolean;
 }

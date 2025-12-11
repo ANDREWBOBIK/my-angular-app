@@ -1,4 +1,4 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ProgrammingLanguage } from '../../shared/models/programming-language';
 
@@ -7,15 +7,13 @@ import { ProgrammingLanguage } from '../../shared/models/programming-language';
   standalone: true,
   imports: [CommonModule],
   templateUrl: './item-card.html',
-  styleUrl: './item-card.css'
+  styleUrls: ['./item-card.css']
 })
 export class ItemCardComponent {
-
   @Input() language!: ProgrammingLanguage;
 
-  @Output() select = new EventEmitter<ProgrammingLanguage>();
-
-  onDetailsClick() {
-    this.select.emit(this.language);
+  // метод для будущих действий (детали, кнопки и т.д.)
+  onDetailsClick(): void {
+    console.log('Clicked:', this.language.name);
   }
 }

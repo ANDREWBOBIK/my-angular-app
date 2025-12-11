@@ -51,7 +51,17 @@ export class DataService {
 
   constructor() {}
 
+  // Метод возвращает массив синхронно
   getItems(): ProgrammingLanguage[] {
     return this.languages;
+  }
+
+  // Фильтрация
+  filterItems(search: string): ProgrammingLanguage[] {
+    if (!search.trim()) return this.languages;
+
+    return this.languages.filter(lang =>
+      lang.name.toLowerCase().includes(search.toLowerCase())
+    );
   }
 }

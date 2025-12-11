@@ -1,23 +1,33 @@
 <div style="padding: 20px;">
 
-  <h2>Список мов програмування</h2>
+  
+  <h2 style="margin-bottom: 15px;">Список мов програмування (RxJS)</h2>
 
+  
   <input
     type="text"
     placeholder="Пошук..."
     [(ngModel)]="searchText"
-    style="padding: 5px; margin: 10px 0; width: 250px;"
+    (input)="onSearchChange()"
+    style="padding: 6px; margin: 10px 0; width: 300px;"
   />
 
-  <div *ngFor="let lang of filteredLanguages">
+
+  <div *ngIf="filteredLanguages.length > 0" class="cards-grid"
+       style="display:flex; flex-wrap:wrap; gap:16px;">
+    
     <app-item-card
+      *ngFor="let lang of filteredLanguages"
       [language]="lang"
-      (select)="onSelected(lang)">
+      (click)="onSelected(lang)">
     </app-item-card>
+
   </div>
 
-  <div *ngIf="filteredLanguages.length === 0">
-    <p>Нічого не знайдено</p>
+  
+  <div *ngIf="filteredLanguages.length === 0" style="margin-top:20px;">
+    <p><strong>Нічого не знайдено.</strong></p>
+    <p>Спробуй змінити текст пошуку або стерти фільтр.</p>
   </div>
 
 </div>

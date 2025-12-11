@@ -1,35 +1,54 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { ItemCardComponent } from '../item-card/item-card';
 import { ProgrammingLanguage } from '../../shared/models/programming-language';
 import { DataService } from '../../shared/services/data.service';
+import { ItemCardComponent } from '../item-card/item-card';
 
 @Component({
   selector: 'app-items-list',
   standalone: true,
-  imports: [CommonModule, FormsModule, ItemCardComponent],
   templateUrl: './items-list.html',
-  styleUrl: './items-list.css'
+  styleUrls: ['./items-list.css'],
+  imports: [
+    CommonModule,
+    FormsModule,        
+    ItemCardComponent   
+  ]
 })
-export class ItemsListComponent implements OnInit {
+export class ItemsListComponent {
 
-  searchText: string = '';
   languages: ProgrammingLanguage[] = [];
+  filteredLanguages: ProgrammingLanguage[] = [];
+  searchText: string = '';
+  isEmptyResult: boolean = false;
 
   constructor(private dataService: DataService) {}
 
   ngOnInit(): void {
     this.languages = this.dataService.getItems();
+    this.filteredLanguages = this.languages;
   }
 
-  get filteredLanguages(): ProgrammingLanguage[] {
-    return this.languages.filter(lang =>
-      lang.name.toLowerCase().includes(this.searchText.toLowerCase())
+  onSearchChange(): void {
+    const text = this.searchText.trim().toLowerCase();
+
+    if (!text) {
+      this.filteredLanguages = this.languages;
+      this.isEmptyResult = false;
+      return;
+    }
+
+    this.filteredLanguages = this.languages.filter(lang =>
+      lang.name.toLowerCase().includes(text) ||
+      lang.creator.toLowerCase().includes(text)
     );
+
+    this.isEmptyResult = this.filteredLanguages.length === 0;
   }
 
-  onSelected(lang: ProgrammingLanguage) {
-    console.log('Обрана мова:', lang);
+  
+  onSelected(language: ProgrammingLanguage): void {
+    console.log('Обрана мова:', language);
   }
 }
