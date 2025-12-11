@@ -1,24 +1,10 @@
-<div class="card" [ngClass]="{ 'popular': language.isPopular }">
+<div class="card">
+  <img [src]="language.image" alt="{{ language.name }}">
+  <h3>{{ language.name }}</h3>
+  <p>{{ language.description }}</p>
+  <p><b>Creator:</b> {{ language.creator }}</p>
+  <p><b>Year:</b> {{ language.year }}</p>
 
-  <img [src]="language.image" [alt]="language.name">
-
-  <div>
-    <h3>{{ language.name }}</h3>
-
-    <p>
-      Автор: <strong>{{ language.creator }}</strong> ({{ language.year }})
-    </p>
-
-    <p>
-      <span *ngIf="language.isPopular">Популярна</span>
-      <span *ngIf="!language.isPopular">Класика</span>
-
-      <span *ngIf="language.isTrending" class="trending">🔥 У тренді</span>
-    </p>
-
-    <p><small>{{ language.description }}</small></p>
-
-    <button (click)="onDetailsClick()">Детальніше</button>
-  </div>
-
+  <span class="popular" *ngIf="language.isPopular">Popular</span>
+  <span class="trending" *ngIf="language.isTrending">🔥 Trending</span>
 </div>

@@ -12,7 +12,7 @@ import { ProgrammingLanguage } from '../../shared/models/programming-language';
 export class ItemCardComponent {
   @Input() language!: ProgrammingLanguage;
 
-  // метод для будущих действий (детали, кнопки и т.д.)
+
   onDetailsClick(): void {
     console.log('Clicked:', this.language.name);
   }
