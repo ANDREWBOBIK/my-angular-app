@@ -1,0 +1,101 @@
+.form-container {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+  background: #f8f9fa;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+  margin-top: 0;
+  margin-bottom: 20px;
+  color: #333;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 10px;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+.row-group {
+    display: flex;
+    gap: 20px;
+}
+
+.row-group > .form-group {
+    flex: 1;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+  color: #555;
+}
+
+input.form-control,
+textarea.form-control {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ced4da;
+  border-radius: 4px;
+  transition: border-color 0.15s ease-in-out;
+}
+
+/* Стилі для невалідних полів */
+input.ng-invalid.ng-touched,
+textarea.ng-invalid.ng-touched {
+  border-color: #dc3545;
+}
+
+.error-text {
+  color: #dc3545 !important;
+  font-size: 0.85em;
+  margin-top: 3px;
+  display: block;
+}
+
+.checkbox-group {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.checkbox-group label {
+    font-weight: normal;
+    margin-left: 5px;
+    margin-bottom: 0;
+}
+
+.form-actions {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 30px;
+}
+
+.submit-btn, .cancel-btn {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    text-decoration: none;
+    text-align: center;
+    display: inline-block;
+}
+
+.submit-btn {
+    background-color: #28a745; 
+    color: white;
+}
+
+.submit-btn:disabled {
+    background-color: #6c757d;
+    cursor: not-allowed;
+}
+
+.cancel-btn {
+    background-color: #dc3545; 
+    color: white;
+}

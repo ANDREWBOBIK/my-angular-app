@@ -1,25 +1,61 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
-import { Observable } from 'rxjs'; 
-import { ItemCardComponent } from '../item-card/item-card';
+import { RouterLink, Router } from '@angular/router';
+import { FormsModule } from '@angular/forms'; 
+import { Observable, BehaviorSubject, combineLatest, map } from 'rxjs'; 
+
+// УСУВАЄ TS2304: Додано необхідні імпорти
+import { DataService } from '../../shared/services/data.service';
 import { ProgrammingLanguage } from '../../shared/models/programming-language';
-import { DataService } from '../../shared/services/data.service'; 
+import { ItemCardComponent } from '../item-card/item-card';
+
 @Component({
   selector: 'app-items-list',
   standalone: true,
-  imports: [CommonModule, FormsModule, ItemCardComponent], 
+  imports: [CommonModule, RouterLink, ItemCardComponent, FormsModule], 
   templateUrl: './items-list.html',
-  styleUrl: './items-list.css'
+  styleUrls: ['./items-list.css']
 })
 export class ItemsListComponent implements OnInit {
+
+  // УСУВАЄ TS2339: Property 'searchText' does not exist
   searchText: string = '';
-  languages$!: Observable<ProgrammingLanguage[]>; 
-  constructor(private dataService: DataService) {} 
+
+  private searchTerms = new BehaviorSubject<string>('');
+  
+  filteredLanguages$!: Observable<ProgrammingLanguage[]>; 
+
+  constructor(
+    private dataService: DataService,
+    private router: Router
+  ) {}
+
   ngOnInit(): void {
-    this.languages$ = this.dataService.getLanguages(); 
+    const languageData$ = this.dataService.getLanguages();
+    
+    this.filteredLanguages$ = combineLatest([
+      languageData$,
+      this.searchTerms
+    ]).pipe(
+      map(([languages, term]) => {
+        if (!term) {
+          return languages;
+        }
+        const lowerTerm = term.toLowerCase();
+        return languages.filter(lang => 
+          lang.name.toLowerCase().includes(lowerTerm) ||
+          lang.creator.toLowerCase().includes(lowerTerm)
+        );
+      })
+    );
   }
-  onSelected(lang: ProgrammingLanguage) {
-    console.log('Обрана мова:', lang);
+
+  onSearchChange(term: string): void {
+    this.searchTerms.next(term);
+  }
+
+  // УСУВАЄ TS2339: Property 'onSelected' does not exist
+  onSelected(language: ProgrammingLanguage): void {
+    this.router.navigate(['/items', language.id]);
   }
 }

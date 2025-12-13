@@ -1,0 +1,129 @@
+<div class="form-container">
+  <h2>Додати нову Мову Програмування</h2>
+
+  <form [formGroup]="languageForm" (ngSubmit)="onSubmit()">
+
+    <div class="form-group">
+      <label for="name">Назва Мови</label>
+      <input
+        id="name"
+        type="text"
+        formControlName="name"
+        class="form-control"
+        placeholder="Наприклад, Java, Swift..."
+      >
+
+      <small
+        *ngIf="nameControl?.invalid && (nameControl?.dirty || nameControl?.touched)"
+        class="error-text"
+      >
+        <span *ngIf="nameControl?.errors?.['required']">
+          Назва обов'язкова.
+        </span>
+        <span *ngIf="nameControl?.errors?.['minlength']">
+          Мінімум {{ nameControl?.errors?.['minlength']?.requiredLength }} символи.
+        </span>
+      </small>
+    </div>
+
+    <div class="row-group">
+      <div class="form-group">
+        <label for="creator">Автор</label>
+        <input
+          id="creator"
+          type="text"
+          formControlName="creator"
+          class="form-control"
+        >
+
+        <small
+          *ngIf="creatorControl?.invalid && (creatorControl?.dirty || creatorControl?.touched)"
+          class="error-text"
+        >
+          Автор обов'язковий.
+        </small>
+      </div>
+
+      <div class="form-group">
+        <label for="year">Рік створення</label>
+        <input
+          id="year"
+          type="number"
+          formControlName="year"
+          class="form-control"
+        >
+
+        <small
+          *ngIf="yearControl?.invalid && (yearControl?.dirty || yearControl?.touched)"
+          class="error-text"
+        >
+          <span *ngIf="yearControl?.errors?.['required']">
+            Рік обов'язковий.
+          </span>
+          <span *ngIf="yearControl?.errors?.['min'] || yearControl?.errors?.['max']">
+            Некоректний рік.
+          </span>
+        </small>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="description">Опис (мінімум 10 символів)</label>
+      <textarea
+        id="description"
+        rows="3"
+        formControlName="description"
+        class="form-control"
+      ></textarea>
+
+      <small
+        *ngIf="descriptionControl?.invalid && (descriptionControl?.dirty || descriptionControl?.touched)"
+        class="error-text"
+      >
+        Опис має бути мінімум 10 символів.
+      </small>
+    </div>
+
+    <div class="form-group">
+      <label for="image">Посилання на фото (або шлях assets/)</label>
+      <input
+        id="image"
+        type="text"
+        formControlName="image"
+        class="form-control"
+      >
+
+      <small
+        *ngIf="imageControl?.invalid && (imageControl?.dirty || imageControl?.touched)"
+        class="error-text"
+      >
+        Фото обов'язкове (URL або assets/).
+      </small>
+    </div>
+
+    <div class="checkbox-group">
+      <input type="checkbox" id="isPopular" formControlName="isPopular">
+      <label for="isPopular">Популярна</label>
+    </div>
+
+    <div class="checkbox-group">
+      <input type="checkbox" id="isTrending" formControlName="isTrending">
+      <label for="isTrending">У тренді</label>
+    </div>
+
+    <div class="form-actions">
+      <button
+        type="submit"
+        class="submit-btn"
+        [disabled]="languageForm.invalid"
+      >
+        Створити
+      </button>
+
+      <a routerLink="/items" class="cancel-btn">
+        Скасувати
+      </a>
+    </div>
+
+  </form>
+</div>
