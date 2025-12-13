@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { ProgrammingLanguage } from '../models/programming-language';
+import { Observable, of } from 'rxjs'; 
 
 @Injectable({
   providedIn: 'root'
@@ -14,7 +15,7 @@ export class DataService {
       year: 2012,
       isPopular: true,
       image: 'assets/TS.jpg',
-      description: 'Строго типізована надмножина JavaScript.',
+      description: 'TypeScript - строго типізована надмножина JavaScript, яка компілюється у чистий JavaScript. Вона підтримує інструменти розробки великих застосунків і є основою для Angular.', 
       isTrending: true
     },
     {
@@ -24,7 +25,7 @@ export class DataService {
       year: 1991,
       isPopular: true,
       image: 'assets/Python.jpg',
-      description: 'Популярна мова загального призначення.',
+      description: 'Python — це популярна високорівнева мова загального призначення. Вона відома своєю читабельністю та використовується у веброзробці, наукових обчисленнях, машинному навчанні та аналізі даних.', 
       isTrending: true
     },
     {
@@ -34,7 +35,7 @@ export class DataService {
       year: 1985,
       isPopular: true,
       image: 'assets/C++.jpg',
-      description: 'Потужна мова з підтримкою ООП.',
+      description: 'C++ — потужна мова з підтримкою об’єктно-орієнтованого програмування. Вона широко використовується для розробки операційних систем, ігор та високопродуктивних додатків.', 
       isTrending: false
     },
     {
@@ -44,7 +45,7 @@ export class DataService {
       year: 1970,
       isPopular: false,
       image: 'assets/Pascal.png',
-      description: 'Мова для навчання структурному програмуванню.',
+      description: 'Pascal — структурна мова програмування, створена для навчання програмуванню. Вона має чіткий синтаксис і досі використовується у певних освітніх та інженерних галузях.', 
       isTrending: false
     }
   ];
@@ -52,8 +53,8 @@ export class DataService {
   constructor() {}
 
   
-  getItems(): ProgrammingLanguage[] {
-    return this.languages;
+  getLanguages(): Observable<ProgrammingLanguage[]> {
+    return of(this.languages);
   }
 
   

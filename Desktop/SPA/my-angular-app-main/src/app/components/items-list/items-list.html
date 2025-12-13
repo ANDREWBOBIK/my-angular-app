@@ -8,16 +8,17 @@
     [(ngModel)]="searchText"
     style="padding: 5px; margin: 10px 0; width: 250px;"
   />
+  
+  <div *ngIf="languages$ | async as langs">
+    <div *ngFor="let lang of langs">
+      <app-item-card
+        [language]="lang"
+        (select)="onSelected(lang)">
+      </app-item-card>
+    </div>
 
-  <div *ngFor="let lang of filteredLanguages">
-    <app-item-card
-      [language]="lang"
-      (select)="onSelected(lang)">
-    </app-item-card>
+    <div *ngIf="langs.length === 0"> 
+      <p>Нічого не знайдено</p>
+    </div>
   </div>
-
-  <div *ngIf="filteredLanguages.length === 0">
-    <p>Нічого не знайдено</p>
-  </div>
-
 </div>

@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterOutlet } from '@angular/router'; 
 
-
 @Component({
   selector: 'app-root',
   standalone: true,
@@ -12,7 +11,7 @@ import { RouterOutlet } from '@angular/router';
   ],
   template: `
     <div style="padding: 20px;">
-      <h1>📚 Мови Програмування</h1>
+      <h1>📚 Список Мов Програмування</h1>
       <router-outlet></router-outlet>
     </div>
   `,

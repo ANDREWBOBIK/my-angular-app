@@ -1,4 +1,4 @@
-<div class="card" [ngClass]="{ 'popular': language.isPopular }">
+<div class="card" [ngClass]="{ 'popular': language.isPopular }" appHighlight> 
 
   <img [src]="language.image" [alt]="language.name">
 
@@ -16,11 +16,11 @@
       <span *ngIf="language.isTrending" class="trending">🔥 У тренді</span>
     </p>
 
-    <p><small>{{ language.description }}</small></p>
-
+    <p><small>{{ language.description | truncate: 100 }}</small></p> 
     
     <a
-      [routerLink]="['/items', language.id]" class="details-link"
+      [routerLink]="['/items', language.id]"
+      class="details-link"
     >
       Детальніше
     </a>
