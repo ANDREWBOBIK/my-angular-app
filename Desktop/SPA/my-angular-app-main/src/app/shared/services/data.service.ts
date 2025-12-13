@@ -51,7 +51,13 @@ export class DataService {
 
   constructor() {}
 
+  
   getItems(): ProgrammingLanguage[] {
     return this.languages;
+  }
+
+  
+  getItemById(id: number): ProgrammingLanguage | undefined {
+    return this.languages.find(lang => lang.id === id);
   }
 }

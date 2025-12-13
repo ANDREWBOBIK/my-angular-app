@@ -1,0 +1,15 @@
+<div *ngIf="language">
+  <h2>{{ language.name }}</h2>
+
+  <img [src]="language.image" width="200" />
+
+  <p><b>Автор:</b> {{ language.creator }}</p>
+  <p><b>Рік створення:</b> {{ language.year }}</p>
+  <p>{{ language.description }}</p>
+
+  <a routerLink="/items">← Назад до списку</a>
+</div>
+
+<div *ngIf="!language">
+  <p>Мову програмування не знайдено.</p>
+</div>

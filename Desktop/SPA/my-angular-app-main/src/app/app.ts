@@ -1,15 +1,23 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
-import { LayoutComponent } from './layout/layout';
-import { ItemsListComponent } from './components/items-list/items-list';
+import { CommonModule } from '@angular/common';
+import { RouterOutlet } from '@angular/router'; 
+
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, LayoutComponent, ItemsListComponent],
-  templateUrl: './app.html',
-  styleUrl: './app.css'
+  imports: [
+    CommonModule,
+    RouterOutlet, 
+  ],
+  template: `
+    <div style="padding: 20px;">
+      <h1>📚 Мови Програмування</h1>
+      <router-outlet></router-outlet>
+    </div>
+  `,
+  styleUrls: [] 
 })
-export class App {
-  title = 'my-angular-app';
+export class AppComponent {
+  title = 'Programming Languages App';
 }

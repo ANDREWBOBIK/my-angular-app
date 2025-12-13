@@ -18,7 +18,12 @@
 
     <p><small>{{ language.description }}</small></p>
 
-    <button (click)="onDetailsClick()">Детальніше</button>
+    
+    <a
+      [routerLink]="['/items', language.id]" class="details-link"
+    >
+      Детальніше
+    </a>
   </div>
 
 </div>
