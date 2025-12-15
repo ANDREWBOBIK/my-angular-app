@@ -1,0 +1,44 @@
+{
+  "languages": [
+    {
+      "id": 1,
+      "name": "TypeScript",
+      "creator": "Microsoft",
+      "year": 2012,
+      "isPopular": true,
+      "image": "assets/TS.jpg",
+      "description": "TypeScript - строго типізована надмножина JavaScript...",
+      "isTrending": true
+    },
+    {
+      "id": 2,
+      "name": "Python",
+      "creator": "Guido van Rossum",
+      "year": 1991,
+      "isPopular": true,
+      "image": "assets/Python.jpg",
+      "description": "Python — це популярна високорівнева мова загального призначення.",
+      "isTrending": true
+    },
+    {
+      "id": 3,
+      "name": "C++",
+      "creator": "Bjarne Stroustrup",
+      "year": 1985,
+      "isPopular": true,
+      "image": "assets/C++.jpg",
+      "description": "C++ — потужна мова з підтримкою об’єктно-орієнтованого програмування.",
+      "isTrending": false
+    },
+    {
+      "id": 4,
+      "name": "Pascal",
+      "creator": "Niklaus Wirth",
+      "year": 1970,
+      "isPopular": false,
+      "image": "assets/Pascal.png",
+      "description": "Pascal — структурна мова програмування, створена для навчання програмуванню.",
+      "isTrending": false
+    }
+  ]
+}
