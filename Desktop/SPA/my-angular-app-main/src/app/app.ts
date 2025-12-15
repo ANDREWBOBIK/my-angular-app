@@ -1,28 +1,20 @@
+
+
 import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { RouterOutlet, RouterLink } from '@angular/router'; // *** Додано RouterLink ***
+import { RouterOutlet } from '@angular/router'; 
+import { HeaderComponent } from './header/header'; 
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [
-    CommonModule,
-    RouterOutlet,
-    RouterLink 
-  ],
+  imports: [RouterOutlet, HeaderComponent], 
   template: `
-    <div style="padding: 20px;">
-      <h1>📚 Список Мов Програмування</h1>
-      
-      <a routerLink="/items/add" class="add-button" 
-         style="display: inline-block; padding: 10px 20px; margin-bottom: 20px; background-color: #007bff; color: white; text-decoration: none; border-radius: 5px;">
-        + Додати Мову
-      </a>
-      
+    <app-header></app-header>
+    <main>
       <router-outlet></router-outlet>
-    </div>
+    </main>
   `,
-  styleUrls: [] 
+  styleUrls: []
 })
 export class AppComponent {
   title = 'Programming Languages App';

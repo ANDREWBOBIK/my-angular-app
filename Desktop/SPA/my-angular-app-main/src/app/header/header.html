@@ -1,3 +1,23 @@
-<header>
-    <h1>ВІТАЄМО ВАС НА СТОРІНЦІ </h1>
+<header class="main-header">
+    <div class="logo">
+        <a [routerLink]="['/items']">Мови Програмування</a>
+    </div>
+    
+    <nav>
+        <a [routerLink]="['/items/add']">Додати мову</a>
+    </nav>
+
+    <div class="auth-status">
+        <ng-container *ngIf="isAuthenticated$ | async; else loginContent">
+            <button (click)="onLogout()" class="logout-btn">
+                Вийти
+            </button>
+        </ng-container>
+
+        <ng-template #loginContent>
+            <a [routerLink]="['/login']" class="login-link">
+                Увійти
+            </a>
+        </ng-template>
+    </div>
 </header>
